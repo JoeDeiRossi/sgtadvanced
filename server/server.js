@@ -31,7 +31,32 @@ server.get('/api/grades', (req, res) => {
 })
 
 server.post('/api/grades', (request, response) => {
-    
+    if (request.body.name === undefined || request.body.course === undefined || request.body.grade === undefined) {
+        response.send({
+            success: false,
+            error: 'invalid name, course, or grade'
+        })
+        return;
+    }
+    db.connect( () => {
+        const name = request.body.name.split(' ');
+        const course = request.body.course;
+        const grade = request.body.grade;
+        const query = "INSERT INTO `grades` SET `surname` = '" + name.slice(1).join(" ") + "', `given_name` = '" + name[0] + "', `course` = '" + course + "', `grade` = " + grade + ", `added` = NOW()";
+        db.query(query, (error, result) => {
+            if (!error) {
+                response.send({
+                    success: true,
+                    new_id: result.insertId
+                })
+            } else {
+                response.send({
+                    success: false,
+                    error
+                })
+            }
+        })
+    })
 })
 
 //In terminal, "npm test" initiates the server, should log the following string
