@@ -278,8 +278,8 @@ class SGT_template{
 	getAllStudents() {
 		$.ajax({
 			dataType: 'json',
-			url: 'http://s-apis.learningfuze.com/sgt/get',
-			method: 'post',
+			url: 'api/grades',
+			method: 'get',
 			data: {
 				api_key: 'Hp4rg9MOoR',
 			},

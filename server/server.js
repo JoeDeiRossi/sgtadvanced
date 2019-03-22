@@ -1,40 +1,119 @@
-//load the express library into the file
+//Load the express library into the file
 const express = require('express');
 
 const server = express();
 
+//Tells express to look for an index.html file in the specified directory (__dirname points to current folder, server)
 server.use(express.static(__dirname + '/html'));
 
-var insults = [
-    'Your father smelt of elderberries',
-    'You program on an altaire',
-    'I bet you still use var',
-    'One line functions are for chumps'
-]
-
-//2 arguments: the path to listen for, AND the callback function to call once that path has been received
-server.get('/', function(request, response) {
-    //an object representing all of the data coming from the client to the server
-    //an object representing all of the data going from the server to the client
-    response.send('Hello, World.');
-});
-
-server.get('/time', (request, response) => {
-    var now = new Date();
-    response.send(now.toLocaleDateString());
+server.get('/api/grades', (req, res) => {
+    res.send(`{
+        "success": true,
+        "data": [{
+            "id": 1,
+            "name": "Joe Dei Rossi",
+            "course": "Math",
+            "grade": 55
+        }, {
+            "id": 2,
+            "name": "Bruce Wayne",
+            "course": "Batman",
+            "grade": 23
+        }, {
+            "id": 3,
+            "name": "Jason Todd",
+            "course": "Robin",
+            "grade": 47
+        }, {
+            "id": 4,
+            "name": "Steve Rogers",
+            "course": "Captain America",
+            "grade": 82
+        }, {
+            "id": 5,
+            "name": "Tony Stark",
+            "course": "Iron Man",
+            "grade": 35
+        }, {
+            "id": 6,
+            "name": "Thor Odinson",
+            "course": "God of Thunder",
+            "grade": 7
+        }, {
+            "id": 7,
+            "name": "Scott Lang",
+            "course": "Ant-Man",
+            "grade": 70
+        }, {
+            "id": 8,
+            "name": "Peter Quill",
+            "course": "Starlord",
+            "grade": 47
+        }, {
+            "id": 9,
+            "name": "Peter Parker",
+            "course": "Spiderman",
+            "grade": 95
+        }, {
+            "id": 10,
+            "name": "Carol Danvers",
+            "course": "Captain Marvel",
+            "grade": 44
+        }, {
+            "id": 11,
+            "name": "Rocket Raccoon",
+            "course": "Heavy Weapons",
+            "grade": 27
+        }, {
+            "id": 12,
+            "name": "I am Groot",
+            "course": "I am Groot",
+            "grade": 59
+        }, {
+            "id": 13,
+            "name": "Natasha Romanoff",
+            "course": "Black Widow",
+            "grade": 34
+        }, {
+            "id": 14,
+            "name": "Clint Barton",
+            "course": "Hawkeye",
+            "grade": 79
+        }, {
+            "id": 15,
+            "name": "Bruce Banner",
+            "course": "Hulk",
+            "grade": 1
+        }, {
+            "id": 16,
+            "name": "Wanda Maximoff",
+            "course": "Scarlet Witch",
+            "grade": 67
+        }, {
+            "id": 17,
+            "name": "Nick Fury",
+            "course": "Eyepatch",
+            "grade": 85
+        }, {
+            "id": 18,
+            "name": "Stan Lee",
+            "course": "Excelsior!",
+            "grade": 100
+        }, {
+            "id": 19,
+            "name": "Stephen Strange",
+            "course": "Dr. Strange",
+            "grade": 31
+        }, {
+            "id": 20,
+            "name": "Bucky Barnes",
+            "course": "Winter Soldier",
+            "grade": 97
+        }]
+    }`)
 })
 
-server.get('/insult', (request, response) => {
-    var randomIndex = Math.floor(Math.random() * insults.length);
-    var randomInsult = insults[randomIndex];
-    response.send(randomInsult);
-})
-
-
-
-
-
+//In terminal, "npm test" initiates the server, should log the following string
 server.listen(3001, ()=> {
-    //console.log('server is running on port 3001');
-    console.log('carrier has arrived');
+    console.log('server is running on port 3001');
 })
