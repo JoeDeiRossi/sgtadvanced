@@ -59,6 +59,31 @@ server.post('/api/grades', (request, response) => {
     })
 })
 
+server.delete('/api/grades', (request, response) => {
+    if (request.query.student_id === undefined) {
+        response.send({
+            success: false,
+            error: 'Must provide a student id for delete'
+        });
+        return;
+    }
+    db.connect( () => {
+        const query = "DELETE FROM `grades` WHERE `id` = " + request.query.student_id;
+        db.query(query, (error, result) => {
+            if (!error) {
+                response.send({
+                    success: true
+                })
+            } else {
+                response.send({
+                    success: false,
+                    error
+                })
+            }
+        })
+    })
+})
+
 //In terminal, "npm test" initiates the server, should log the following string
 server.listen(3001, ()=> {
     console.log('server is running on port 3001');
