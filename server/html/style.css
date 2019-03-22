@@ -1,0 +1,46 @@
+
+#errorModal {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    padding-top: 200px;
+    z-index: 3;
+    background-color: rgba(0,0,0,0.4);
+}
+
+#modalContent {
+    width: 40%;
+    margin: auto;
+}
+
+#modalTitle {
+    text-align: center;
+    font-size: 3rem;
+    padding: 5px 0;
+    border-radius: 10px 10px 0 0;
+    background-color: white;
+    color: red;
+}
+
+#errorsContainer {
+    padding: 10px 0;
+    border-radius: 0 0 10px 10px;
+    background-color: white;
+}
+
+#errorsList {
+    margin: 0;
+    font-size: 2rem;
+}
+
+#modalClose {
+    position: fixed;
+    top: 200px;
+    right: 30%;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    color: black;
+    border-top-right-radius: 10px;
+}

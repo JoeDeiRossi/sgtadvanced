@@ -1,0 +1,70 @@
+
+
+#errorArea .header{
+	color: blue;
+	font-weight: bold;
+}
+#errorArea .message {
+	color: green;
+}
+#errorArea .error{
+	color: black;
+	background-color: red;
+}
+
+#errorArea .green{
+	background-color: green;
+	color: white;
+	font-weight: bold;
+}
+
+.runTestButton{
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+	padding: .5%;
+	background-color: red;
+	cursor: pointer;
+}
+.runTestButton:hover{
+	background-color: green;
+	color: white;
+}
+#errorArea{
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: scroll;
+	height: 100%;
+	width: 100%;
+}
+.modalContainer{
+	background-color: white;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	height: 15%;
+	width: 50%;
+	transform: translateX(-50%);
+	border: 1px solid black;
+}
+
+.minimizeButton{
+	background-color: grey;
+	padding: 5px;
+	cursor: pointer;
+	position: absolute;
+	color: white;
+	font-size: 14px;
+	top: 0;
+	right: 0;
+}
+body>.minimizeButton{
+	right: 0;
+}
+.modalContainer > .minimizeButton{
+	top: auto;
+	bottom: 100%;
+}
+
+

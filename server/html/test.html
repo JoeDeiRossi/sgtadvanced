@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+
+
+function test(error){
+	console.error(error);
+	
+}
+function other(){
+	try{
+	   console.log(a);
+	} catch(error){
+	    test(error);
+	    //console.trace(error);
+	}
+}
+other();
+</script>
+</head>
+<body>
+
+</body>
+</html>

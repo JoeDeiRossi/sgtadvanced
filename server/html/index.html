@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="components/student.js"></script>
+    <script type="text/javascript" src="components/sgt.js"></script>
+    <script type="text/javascript" src="components/error_modal.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="tests/tests.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="tests/tests.js"></script>
+    <meta name="viewport" content="initial-scale=1, user-scalable=no">
+</head>
+<body>
+
+<div class="col-xs-12 col-lg-12">
+    <div class="page-header media-heading col-xs-12 col-lg-12">
+        <!-- only show this element when the isnt on mobile -->
+        <h1 class="hidden-xs col-lg-12">Student Grade Table
+            <small class="col-lg-offset-6">Grade Average : <span class="avgGrade">0</span></small>
+        </h1>
+        <!-- only show this element when the user gets to a mobile version -->
+        <h3 class="hidden-sm hidden-md hidden-lg hidden-xl">Student Grade Table
+            <small class="col-xs-offset-9">Grade Average : <span class="avgGrade">0</span></small>
+        </h3>
+    </div>
+    <div class="student-add-form col-xs-12 col-lg-3 pull-right">
+        <h4>Add Student</h4>
+        <div class="form-group input-group col-xs-12 col-lg-12">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user"> </span>
+            </span>
+            <input type="text" class="form-control form-rounded" name="studentName" id="studentName" placeholder="Student Name">
+        </div>
+        <div class="form-group input-group col-xs-12 col-lg-12">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-list-alt"> </span>
+            </span>
+            <input type="text" class="form-control form-rounded" name="course" id="studentCourse" placeholder="Student Course">
+        </div>
+        <div class="form-group input-group col-xs-12 col-lg-12">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-education"> </span>
+            </span>
+            <input type="text" class="form-control form-rounded" name="studentGrade" id="studentGrade" placeholder="Student Grade">
+        </div>
+        <button type="button" class="add btn btn-success" id="addButton">Add</button>
+        <button type="button" class="cancel btn btn-default" id="cancelButton">Cancel</button>
+        <button type="button" class="btn btn-primary" id="getDataButton">Get Data From Server</button>
+    </div>
+    <div class="student-list-container page-header media-heading col-xs-12 col-md-9 col-lg-9">
+        <table class="student-list col-lg-9">
+            <thead>
+            <tr>
+                <th class="col-xs-4 col-md-4">Student Name</th>
+                <th class="col-xs-4 col-md-4">Student Course</th>
+                <th class="col-xs-4 col-md-4">Student Grade</th>
+                <th class="col-xs-4 col-md-4">Operations</th>
+            </tr>
+            </thead>
+            <tbody id="displayArea">
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
