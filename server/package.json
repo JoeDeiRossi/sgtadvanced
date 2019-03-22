@@ -1,0 +1,14 @@
+{
+  "name": "server.js",
+  "version": "1.0.0",
+  "description": "my first webserver for sgt",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Joe Dei Rossi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
