@@ -5,15 +5,18 @@ const express = require('express');
 const mysql = require('mysql');
 //Load the credentials from a local file for mysql
 const mysqlcredentials = require('./mysqlcreds.js');
+const cors = require('cors');
 //Using the credentials that we loaded, establish a PRELIMINARY connection to the database
 const db = mysql.createConnection(mysqlcredentials);
 
 const server = express();
 
+server.use(cors());
 //Tells express to look for /html folder in the current directory (server). __dirname=current working directory
 server.use(express.static(__dirname + '/html'));
 //Have express pull body data that is urlencoded and place it in an object called 'body'
 server.use(express.urlencoded({extended: false}));
+server.use(express.json()) //Used for things like axios
 
 //Make an endpoint to handle retrieving the grades of all students
 server.get('/api/grades', (req, res) => {
@@ -83,9 +86,9 @@ server.post('/api/grades', (request, response) => {
 })
 
 //Make an endpoint to handle deleting a student
-server.delete('/api/grades', (request, response) => {
+server.delete('/api/grades/:student_id', (request, response) => {
     //Check the query object and see if an id was sent
-    if (request.query.student_id === undefined) {
+    if (request.params.student_id === undefined) {
         //If no id was sent, send a response indicating that an id must be provided
         response.send({
             success: false,
@@ -96,7 +99,7 @@ server.delete('/api/grades', (request, response) => {
     //Establish the connection to the database and call the callback (parameter) when connection is made
     db.connect( () => {
         //Create mysql query
-        const query = "DELETE FROM `grades` WHERE `id` = " + request.query.student_id;
+        const query = "DELETE FROM `grades` WHERE `id` = " + request.params.student_id;
         //Send the data to the database, and call the given callback once the data is retrieved, or an error occurs
         db.query(query, (error, result) => {
             //If error is null, no error occurred, so send a confirmation that the student was deleted
